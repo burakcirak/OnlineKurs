@@ -1,3 +1,6 @@
+using AspNet_OnlineKursApp.Models.Entities.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace AspNet_OnlineKursApp
 {
     public class Program
@@ -5,7 +8,7 @@ namespace AspNet_OnlineKursApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddDbContext<OnlineAppDbContext>(x=>x.UseSqlServer(builder.Configuration.GetConnectionString("")));
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
